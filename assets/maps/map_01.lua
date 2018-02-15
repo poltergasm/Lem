@@ -8,7 +8,7 @@ return {
   height = 23,
   tilewidth = 32,
   tileheight = 32,
-  nextobjectid = 12,
+  nextobjectid = 15,
   properties = {},
   tilesets = {
     {
@@ -68,7 +68,7 @@ return {
       properties = {},
       encoding = "base64",
       compression = "zlib",
-      data = "eJztzkEJAEAIAEEz2MVo1/8qCCJ+ZmD/GwEAAHS9nFXL+fN3+fcBSeZLeQ=="
+      data = "eJxjYBgFo2AUjIJRMApGwSgYBSMFXBxoBxAAgowD7QLCoFSIMmxKYzzqvlH3DaT7ACONTFw="
     },
     {
       type = "tilelayer",
@@ -209,6 +209,45 @@ return {
           shape = "rectangle",
           x = 928,
           y = 480,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "level_end",
+          type = "",
+          shape = "rectangle",
+          x = 1248,
+          y = 480,
+          width = 32,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "buzzy",
+          type = "",
+          shape = "rectangle",
+          x = 736,
+          y = 512,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "box",
+          type = "",
+          shape = "rectangle",
+          x = 512,
+          y = 416,
           width = 32,
           height = 32,
           rotation = 0,

@@ -3,8 +3,11 @@ local EntityCrate    = require "ents.Crate"
 local EntityBoxBlock = require "ents.BoxBlock"
 local EnemyBlob      = require "ents.EnemyBlob"
 local EnemySnail     = require "ents.EnemySnail"
+local EnemyBuzzy     = require "ents.EnemyBuzzy"
 local EntitySpring   = require "ents.Spring"
 local EntitySwitch   = require "ents.Switch"
+local EntityWhoosh   = require "ents.Whoosh"
+local LevelEnd       = require "ents.LevelEnd"
 local EntityVertPlatform = require "ents.VertPlatform"
 
 local Scene = require "lib.Scene"
@@ -23,9 +26,23 @@ function Game:setup_bump()
   self.world.gravity = GRAVITY
 end
 
+function Game:load_assets()
+  Jukebox:add_song({ file = "assets/audio/bgm/song1.mp3" })
+  Jukebox:add_song({ file = "assets/audio/bgm/song2.mp3" })
+  Jukebox:play()
+
+  self.snd = {
+    jump = love.audio.newSource("assets/audio/sfx/jump.wav"),
+    squash = love.audio.newSource("assets/audio/sfx/squash.wav"),
+    spring = love.audio.newSource("assets/audio/sfx/spring.wav"),
+    switch = love.audio.newSource("assets/audio/sfx/switch.wav"),
+    boxblock = love.audio.newSource("assets/audio/sfx/boxblock.wav")
+  }
+end
+
 function Game:load_level()
   self:setup_bump()
-  self.map = sti("assets/maps/map_01.lua", { "bump" })
+  self.map = sti(MapManager:map(), { "bump" })
   self.map:bump_init(self.world)
   self:spawn_objects()
   self.map:removeLayer("Objects")
@@ -34,6 +51,11 @@ end
 function Game:create_box(x, y)
   local box = EntityCrate("ent_crate", x, y, 32, 32, 200, 200, 10)
   self.entity_mgr:add(box)
+end
+
+function Game:create_whoosh(x, y)
+  local whoosh = EntityWhoosh("ent_whoosh", x, y, 32, 32, 200, 200, 10)
+  self.entity_mgr:add(whoosh)
 end
 
 function Game:spawn_objects()
@@ -67,6 +89,11 @@ function Game:spawn_objects()
       local snail = EnemySnail("ent_snail", object.x, object.y, object.width, object.height, 200, 64, 2)
       self.entity_mgr:add(snail)
     
+    -- Buzzy
+    elseif object.name == "buzzy" then
+      local buzzy = EnemyBuzzy("ent_buzzy", object.x, object.y, object.width, object.height, 200, 200, 2)
+      self.entity_mgr:add(buzzy)
+
     -- Vertical Moving Platform
     elseif object.name == "vert_platform" then
       local plat = EntityVertPlatform("ent_vert_platform", object.x, object.y, object.width, object.height)
@@ -78,6 +105,11 @@ function Game:spawn_objects()
     elseif object.name == "switch" then
       local switch = EntitySwitch("ent_switch", object.x, object.y, object.width, object.height)
       self.entity_mgr:add(switch)
+
+    -- Level End entity
+    elseif object.name == "level_end" then
+      local lvlend = LevelEnd("level_end", object.x, object.y, object.width, object.height)
+      self.entity_mgr:add(lvlend)
     end
   end
 end
@@ -85,6 +117,7 @@ end
 function Game:new()
   Game.super.new(self)
 
+  self:load_assets()
   self:load_level()
 end
 
@@ -147,7 +180,7 @@ end
 
 function Game:update(dt)
   Game.super.update(self, dt)
-
+  
   self.map:update(dt)
   self:player_movement(dt)
   self.player:grip_check()

@@ -15,7 +15,7 @@ function Entity:new(name, x, y, w, h)
   self.is_dynamic = false
 
   -- for collision filters
-  self.is_coin = false
+  self.is_collectable = false
   self.is_wall = false
   self.is_exit = false
   self.is_spring = false
@@ -38,10 +38,12 @@ function Entity:update(dt)
 end
 
 function Entity:draw()
-  if self.state then
-    self.state:draw(self.image, self.pos.x, self.pos.y)
-  else
-    love.graphics.draw(self.image, self.pos.x, self.pos.y)
+  if self.image then
+    if self.state then
+      self.state:draw(self.image, self.pos.x, self.pos.y)
+    else
+      love.graphics.draw(self.image, self.pos.x, self.pos.y)
+    end
   end
 end
 

@@ -8,7 +8,7 @@ function Animate:new(ent)
 end
 
 function Animate:add(a)
-  assert(a ~= nil and type(a) == "table", "Animate:anims expects a table as a parameter")
+  assert(a ~= nil and type(a) == "table", "Animate:add expects a table as a parameter")
 
   -- Holy fuck. This needs fixing badly.
   for k,v in pairs(a) do
@@ -21,6 +21,24 @@ function Animate:add(a)
       self.animations[k] = anim8.newAnimation(self.grid(v[1], v[2]), v[3])
       if v[4] then
         self.animations[k .. "_flipped"] = anim8.newAnimation(self.grid(v[1], v[2]), v[3]):flipH()
+      end
+    end
+  end
+end
+
+function Animate:add_vert(a)
+  assert(a ~= nil and type(a) == "table", "Animate:add_vert expects a table as a parameter")
+
+  for k,v in pairs(a) do
+    if v[5] and type(v[5]) == "function" then
+      self.animations[k] = anim8.newAnimation(self.grid(v[1], v[2]), v[3], v[5])
+      if v[4] then
+        self.animations[k .. "_flipped"] = anim8.newAnimation(self.grid(v[1], v[2]), v[3], v[5]):flipV()
+      end
+    else
+      self.animations[k] = anim8.newAnimation(self.grid(v[1], v[2]), v[3])
+      if v[4] then
+        self.animations[k .. "_flipped"] = anim8.newAnimation(self.grid(v[1], v[2]), v[3]):flipV()
       end
     end
   end

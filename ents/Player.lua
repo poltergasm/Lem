@@ -13,7 +13,7 @@ function Player:new(...)
   self.Animate:add({
     idle = {"1-2", 1, 0.2, true},
     jump = {"3-3", 1, 0.2, true},
-    walk = {"10-11", 1, 0.1, true},
+    walk = {"10-11", 1, 0.1, true}
   })
 
   self.state = self.Animate:state("idle")
@@ -42,6 +42,7 @@ function Player:move_left(dt)
 end
 
 function Player:jump(dt)
+  Game.snd.jump:play()
   if self.dir == 1 then
     self.state = self.Animate:state("jump")
   else
@@ -80,12 +81,14 @@ function Player:collides(normal, other)
   
   elseif other.name == "ent_box_block" then
     if normal.y == 1 and not other.used then
+      Game.snd.boxblock:play()
       other.used = true
-      --snd.boxblock:play()
+      Game.snd.boxblock:play()
       Game:create_box(other.pos.x, other.pos.y-48)
     end
 
   elseif other.name == "ent_spring" and normal.y == -1 then
+    Game.snd.spring:play()
     other:pressed(self)
 
   elseif other.name == "ent_vert_platform" then
@@ -95,8 +98,14 @@ function Player:collides(normal, other)
 
   elseif other.name == "ent_switch" then
     if (normal.x == -1 or normal.x == 1) and (not other.pressed and Input:grab()) then
+      Game.snd.switch:play()
       other:press()
     end
+
+  elseif other.name == "level_end" then
+    MapManager:next_map()
+    Game:load_level()
+
   end
 end
 
