@@ -21,5 +21,4 @@ function love.draw()
 
   local scale = love.graphics.getWidth() / Game.Canvas:getWidth()
   love.graphics.draw(Game.Canvas, 0, 0, 0, scale, scale)
-  love.graphics.print("Hello, World!", 200, 200)
 end

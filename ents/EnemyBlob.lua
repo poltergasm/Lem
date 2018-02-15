@@ -9,7 +9,7 @@ function EnemyBlob:new(...)
 
   self:add("Animate")
   self.Animate:add({ run = {"1-3", 3, 0.2, true} })
-  self.state = self.Animate:state("run")
+  self.state = self.Animate:state("run_flipped")
 end
 
 function EnemyBlob:update(dt)

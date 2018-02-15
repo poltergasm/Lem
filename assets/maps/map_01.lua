@@ -8,7 +8,7 @@ return {
   height = 23,
   tilewidth = 32,
   tileheight = 32,
-  nextobjectid = 10,
+  nextobjectid = 12,
   properties = {},
   tilesets = {
     {
@@ -68,7 +68,7 @@ return {
       properties = {},
       encoding = "base64",
       compression = "zlib",
-      data = "eJztzjENAAAIwDA04AVp+McCCQ9Hm+xfBAAAsNV5q4758/f5bwCmJUBh"
+      data = "eJztzkEJAEAIAEEz2MVo1/8qCCJ+ZmD/GwEAAHS9nFXL+fN3+fcBSeZLeQ=="
     },
     {
       type = "tilelayer",
@@ -86,7 +86,7 @@ return {
       },
       encoding = "base64",
       compression = "zlib",
-      data = "eJztzcEJACEAA8FYwD3Uyq9jXzagIAozsM+QBAAA3vaXc1/1S9pifWM7g5sNPt4Ecw=="
+      data = "eJztzcEJACEAA8FYwD3Uyq9jWxAFRZiBfYYkAADwtr+c+6lf0hbrG9vZ4KYBhqkF/Q=="
     },
     {
       type = "objectgroup",
@@ -183,6 +183,32 @@ return {
           shape = "rectangle",
           x = 832,
           y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "snail",
+          type = "",
+          shape = "rectangle",
+          x = 928,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "box_block",
+          type = "",
+          shape = "rectangle",
+          x = 928,
+          y = 480,
           width = 32,
           height = 32,
           rotation = 0,

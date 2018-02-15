@@ -2,6 +2,7 @@ local Player = require "ents.Player"
 local EntityCrate    = require "ents.Crate"
 local EntityBoxBlock = require "ents.BoxBlock"
 local EnemyBlob      = require "ents.EnemyBlob"
+local EnemySnail     = require "ents.EnemySnail"
 local EntitySpring   = require "ents.Spring"
 local EntitySwitch   = require "ents.Switch"
 local EntityVertPlatform = require "ents.VertPlatform"
@@ -60,6 +61,11 @@ function Game:spawn_objects()
     elseif object.name == "blob" then
       local blob = EnemyBlob("ent_blob", object.x, object.y, object.width, object.height, 200, 64, 2)
       self.entity_mgr:add(blob)
+
+    -- Enemy Snail
+    elseif object.name == "snail" then
+      local snail = EnemySnail("ent_snail", object.x, object.y, object.width, object.height, 200, 64, 2)
+      self.entity_mgr:add(snail)
     
     -- Vertical Moving Platform
     elseif object.name == "vert_platform" then
