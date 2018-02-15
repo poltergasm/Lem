@@ -84,6 +84,19 @@ function Player:collides(normal, other)
       --snd.boxblock:play()
       Game:create_box(other.pos.x, other.pos.y-48)
     end
+
+  elseif other.name == "ent_spring" and normal.y == -1 then
+    other:pressed(self)
+
+  elseif other.name == "ent_vert_platform" then
+    if not other.stopped then
+      other.stopped = true
+    end
+
+  elseif other.name == "ent_switch" then
+    if (normal.x == -1 or normal.x == 1) and (not other.pressed and Input:grab()) then
+      other:press()
+    end
   end
 end
 

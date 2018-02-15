@@ -8,7 +8,7 @@ return {
   height = 23,
   tilewidth = 32,
   tileheight = 32,
-  nextobjectid = 7,
+  nextobjectid = 10,
   properties = {},
   tilesets = {
     {
@@ -68,7 +68,7 @@ return {
       properties = {},
       encoding = "base64",
       compression = "zlib",
-      data = "eJztzrEJAAAIBLGfwV3d3xUEO0ng+ksAAICtrlv+/H3+GzV2KjE="
+      data = "eJztzjENAAAIwDA04AVp+McCCQ9Hm+xfBAAAsNV5q4758/f5bwCmJUBh"
     },
     {
       type = "tilelayer",
@@ -86,7 +86,7 @@ return {
       },
       encoding = "base64",
       compression = "zlib",
-      data = "eJztzrEJACAUQ8E4gIU6uRu7g8UX4Q5enSQAAPC33eq2Rk/mZavX/YQXDud0AoM="
+      data = "eJztzcEJACEAA8FYwD3Uyq9jXzagIAozsM+QBAAA3vaXc1/1S9pifWM7g5sNPt4Ecw=="
     },
     {
       type = "objectgroup",
@@ -143,6 +143,45 @@ return {
           type = "",
           shape = "rectangle",
           x = 352,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "spring",
+          type = "",
+          shape = "rectangle",
+          x = 512,
+          y = 512,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "vert_platform",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 512,
+          width = 64,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "switch",
+          type = "",
+          shape = "rectangle",
+          x = 832,
           y = 544,
           width = 32,
           height = 32,

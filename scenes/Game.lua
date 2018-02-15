@@ -2,6 +2,9 @@ local Player = require "ents.Player"
 local EntityCrate    = require "ents.Crate"
 local EntityBoxBlock = require "ents.BoxBlock"
 local EnemyBlob      = require "ents.EnemyBlob"
+local EntitySpring   = require "ents.Spring"
+local EntitySwitch   = require "ents.Switch"
+local EntityVertPlatform = require "ents.VertPlatform"
 
 local Scene = require "lib.Scene"
 local Game = Scene:extends()
@@ -43,13 +46,32 @@ function Game:spawn_objects()
     elseif object.name == "box" then
       self:create_box(object.x, object.y)
     
+    -- Box Block
     elseif object.name == "box_block" then
       local boxblock = EntityBoxBlock("ent_box_block", object.x, object.y, object.width, object.height)
       self.entity_mgr:add(boxblock)
 
+    -- Spring
+    elseif object.name == "spring" then
+      local spring = EntitySpring("ent_spring", object.x, object.y, 25, 25, 200, 200, 10)
+      self.entity_mgr:add(spring)
+
+    -- Enemy Blob
     elseif object.name == "blob" then
       local blob = EnemyBlob("ent_blob", object.x, object.y, object.width, object.height, 200, 64, 2)
       self.entity_mgr:add(blob)
+    
+    -- Vertical Moving Platform
+    elseif object.name == "vert_platform" then
+      local plat = EntityVertPlatform("ent_vert_platform", object.x, object.y, object.width, object.height)
+      plat.orig_y = object.y
+      if object.properties.stopped ~= nil and object.properties.stopped == true then plat.stopped = true end
+      self.entity_mgr:add(plat)
+
+    -- Switch
+    elseif object.name == "switch" then
+      local switch = EntitySwitch("ent_switch", object.x, object.y, object.width, object.height)
+      self.entity_mgr:add(switch)
     end
   end
 end
