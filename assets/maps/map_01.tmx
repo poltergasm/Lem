@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" source="../tilesets/spritesheet.tsx"/>
+ <layer name="Background" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0cdBAlEAANFdCkFypiV1zaK2BJhzS+QcevA14JE9/cM7zmmSKIqSIAiCIAhSNWDIiDETpsyYs2DJijUbtuzYp9Bn4yg6IkeeAkVKlKlQpUadBk1atOPD98eccErCGedccMkV19xwS4c77nlIoe/So88jTzzzwitvvPPBJ19888NvCv2AISPGTJgyY86CJSvWbNiyY59Cn834T448BYqUKFOhSo06DZq0aGcO33fjIAj+8wdYxK+A
+  </data>
+ </layer>
+ <layer name="Background2" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJAAAIBLGfwV3d3xUEO0ng+ksAAICtrlv+/H3+GzV2KjE=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="23">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJACAUQ8E4gIU6uRu7g8UX4Q5enSQAAPC33eq2Rk/mZavX/YQXDud0AoM=
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="1" name="player_spawn" x="32" y="512" width="32" height="64"/>
+  <object id="2" name="box" x="160" y="480" width="32" height="32"/>
+  <object id="4" name="box_block" x="224" y="480" width="32" height="32"/>
+  <object id="6" name="blob" x="352" y="544" width="32" height="32"/>
+ </objectgroup>
+</map>
