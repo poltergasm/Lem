@@ -109,6 +109,10 @@ function Player:collides(normal, other)
   end
 end
 
+function Player:die()
+  Game:load_level()
+end
+
 function Player:grip_check()
   if self.gripped_ent ~= nil and self.is_gripping then
     self.gripped_ent.dir = self.dir

@@ -19,6 +19,18 @@ function DynamicEntity:new(name, x, y, w, h, max_vel_x, max_vel_y, mass, speed)
 end
 
 function DynamicEntity:update_physics(dt)
+  if self.pos.x < 0 then
+    if self.is_enemy then
+      self:hit_edge_left()
+    end
+    self.pos.x = 5
+  elseif self.pos.x > CANVAS_WIDTH-32 then
+    if self.is_enemy then
+      self:hit_edge_right()
+    end
+    self.pos.x = CANVAS_WIDTH-32
+  end
+
   if self.grounded == true then
     self.vel.x = self.vel.x - 50 * dt * PHYSICS_MULT
   else

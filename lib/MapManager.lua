@@ -3,19 +3,25 @@ local MapManager = {}
 local MAPS = {
   {
     idx = 1,
-    file = "map_01",
+    file = "map_1",
     name = "Elementary Fields"
   },
 
   {
     idx   = 2,
-    file  = "map_02",
+    file  = "map_2",
     name  = "The blob splatting theory"
+  },
+
+  {
+    idx   = 3,
+    file  = "map_3",
+    name  = "Hot Miami Nights"
   }
 }
 
 function MapManager:new()
-  self.current = 1
+  self.current = 3
   return self
 end
 

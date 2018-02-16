@@ -1,4 +1,5 @@
 local Player = require "ents.Player"
+local Entity = require "lib.entities.Entity"
 local EntityCrate    = require "ents.Crate"
 local EntityBoxBlock = require "ents.BoxBlock"
 local EnemyBlob      = require "ents.EnemyBlob"
@@ -110,6 +111,10 @@ function Game:spawn_objects()
     elseif object.name == "level_end" then
       local lvlend = LevelEnd("level_end", object.x, object.y, object.width, object.height)
       self.entity_mgr:add(lvlend)
+    
+    elseif object.name == "spike" then
+      local spike = Entity("ent_spike", object.x, object.y, object.width, object.height)
+      self.entity_mgr:add(spike)
     end
   end
 end
@@ -170,6 +175,16 @@ function Game:check_cols(ent, cols, idx)
   for i,v in ipairs(cols) do
     local other = cols[i].other
     local this  = cols[i].normal
+
+    if (ent.name == "ent_player" or ent.name == "ent_blob") and other.name == "ent_spike" then
+      if ent.is_player then
+        self:load_level()
+      else
+        ent.alive = false
+        ent.remove = true
+        self:create_whoosh(ent.pos.x, ent.pos.y)
+      end
+    end
 
     if ent.is_dynamic then
       if ent.collides ~= nil then ent:collides(this, other) end

@@ -7,3 +7,4 @@ Jukebox  = require("lib.Jukebox"):new()
 Game = require "scenes.Game"()
 SceneManager = require "lib.SceneManager"
 Game.Canvas = love.graphics.newCanvas(1280, 736)
+CANVAS_WIDTH = Game.Canvas:getWidth()
