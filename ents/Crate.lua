@@ -13,10 +13,8 @@ function EntityCrate:collides(normal, other)
     other.vel.x = (self.vel.x)
 
   elseif (other.name == "ent_blob" or other.name == "ent_snail" or other.name == "ent_buzzy") and normal.y == -1 then
-    Game.snd.squash:play()  
-    other.alive = false
-    other.remove = true
-    Game:create_whoosh(other.pos.x, other.pos.y)
+    other:die()
+    Game:check_blobs()
 
   elseif other.name == "ent_spring" and normal.y == -1 then
     Game.snd.spring:play()

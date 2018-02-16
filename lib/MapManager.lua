@@ -21,7 +21,7 @@ local MAPS = {
 }
 
 function MapManager:new()
-  self.current = 3
+  self.current = 2
   return self
 end
 

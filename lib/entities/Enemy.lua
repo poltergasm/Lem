@@ -39,4 +39,11 @@ function Enemy:collides(normal, other)
   end
 end
 
+function Enemy:die()
+  Game.snd.squash:play()  
+  self.alive = false
+  self.remove = true
+  Game:create_whoosh(self.pos.x, self.pos.y)
+end
+
 return Enemy

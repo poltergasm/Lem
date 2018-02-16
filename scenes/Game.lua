@@ -8,6 +8,7 @@ local EnemyBuzzy     = require "ents.EnemyBuzzy"
 local EntitySpring   = require "ents.Spring"
 local EntitySwitch   = require "ents.Switch"
 local EntityWhoosh   = require "ents.Whoosh"
+local EntityBlocker  = require "ents.Blocker"
 local LevelEnd       = require "ents.LevelEnd"
 local EntityVertPlatform = require "ents.VertPlatform"
 
@@ -112,9 +113,15 @@ function Game:spawn_objects()
       local lvlend = LevelEnd("level_end", object.x, object.y, object.width, object.height)
       self.entity_mgr:add(lvlend)
     
+    -- Spike / Environmental trap
     elseif object.name == "spike" then
       local spike = Entity("ent_spike", object.x, object.y, object.width, object.height)
       self.entity_mgr:add(spike)
+
+    -- Blocker
+    elseif object.name == "blocker" then
+      local blocker = EntityBlocker("ent_blocker", object.x, object.y, object.width, object.height)
+      self.entity_mgr:add(blocker)
     end
   end
 end
@@ -126,6 +133,29 @@ function Game:new()
   self:load_level()
 end
 
+function Game:check_blobs()
+  local b = false
+  for i = #self.entity_mgr.entities, 1, -1 do
+    if self.entity_mgr.entities[i].name == "ent_blob" then
+      if self.entity_mgr.entities[i].alive then
+        b = true
+        break
+      end
+    end
+  end
+
+  -- if no blobs left, then remove blockers
+  if not b then
+    for i = #self.entity_mgr.entities, 1, -1 do
+    if self.entity_mgr.entities[i].name == "ent_blocker" then
+      local blocker = self.entity_mgr.entities[i]
+      blocker.remove = true
+      self:create_whoosh(blocker.pos.x, blocker.pos.y)
+    end
+  end
+  end
+end
+
 function Game:player_movement(dt)
   if not draw_name then
     if Input:walk("right") then
@@ -135,7 +165,6 @@ function Game:player_movement(dt)
     end
 
     if Input:jump() and self.player.grounded then
-      --snd.jump:play()
       self.player:jump(dt)
     end
   end
@@ -177,13 +206,7 @@ function Game:check_cols(ent, cols, idx)
     local this  = cols[i].normal
 
     if (ent.name == "ent_player" or ent.name == "ent_blob") and other.name == "ent_spike" then
-      if ent.is_player then
-        self:load_level()
-      else
-        ent.alive = false
-        ent.remove = true
-        self:create_whoosh(ent.pos.x, ent.pos.y)
-      end
+      ent:die()
     end
 
     if ent.is_dynamic then
