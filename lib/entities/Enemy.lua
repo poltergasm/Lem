@@ -44,6 +44,9 @@ function Enemy:die()
   self.alive = false
   self.remove = true
   Game:create_whoosh(self.pos.x, self.pos.y)
+  if self.name == "ent_blob" then
+    Game:check_blobs()
+  end
 end
 
 return Enemy

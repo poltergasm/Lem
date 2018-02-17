@@ -104,13 +104,14 @@ function Player:collides(normal, other)
 
   elseif other.name == "level_end" then
     MapManager:next_map()
-    Game:load_level()
+    Game:load_level(true)
 
   end
 end
 
 function Player:die()
-  Game:load_level()
+  self.remove = true
+  Game:create_whoosh(self.pos.x, self.pos.y, "purple")
 end
 
 function Player:grip_check()

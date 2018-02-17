@@ -1,4 +1,5 @@
 local Player = require "ents.Player"
+local Label  = require "lib.ui.Label"
 local Entity = require "lib.entities.Entity"
 local EntityCrate    = require "ents.Crate"
 local EntityBoxBlock = require "ents.BoxBlock"
@@ -19,7 +20,8 @@ local bump = require "lib.bump"
 local sti  = require "lib.sti"
 
 local GRAVITY = 14.8
-local draw_name = false
+local draw_name = true
+local level_name = nil
 
 function Game:setup_bump()
   self.entity_mgr.entities = {}
@@ -42,12 +44,29 @@ function Game:load_assets()
   }
 end
 
-function Game:load_level()
+function Game:new()
+  Game.super.new(self)
+
+  self:load_assets()
+  self:load_level()
+  draw_name = true
+end
+
+function Game:load_level(new_level)
   self:setup_bump()
   self.map = sti(MapManager:map(), { "bump" })
   self.map:bump_init(self.world)
   self:spawn_objects()
   self.map:removeLayer("Objects")
+
+  local cx = love.graphics.getWidth() - Canvas:getWidth() * 0.6
+  local cy = love.graphics.getHeight() - Canvas:getHeight() * 0.6
+  level_name = Label(cx, cy, 300, 60, MapManager:map_name())
+  level_name.background = true
+
+  if new_level then
+    draw_name = true
+  end
 end
 
 function Game:create_box(x, y)
@@ -55,8 +74,9 @@ function Game:create_box(x, y)
   self.entity_mgr:add(box)
 end
 
-function Game:create_whoosh(x, y)
-  local whoosh = EntityWhoosh("ent_whoosh", x, y, 32, 32, 200, 200, 10)
+function Game:create_whoosh(x, y, purple)
+  local name = purple and "ent_whoosh_purple" or "ent_whoosh"
+  local whoosh = EntityWhoosh(name, x, y, 32, 32, 200, 200, 10)
   self.entity_mgr:add(whoosh)
 end
 
@@ -126,13 +146,6 @@ function Game:spawn_objects()
   end
 end
 
-function Game:new()
-  Game.super.new(self)
-
-  self:load_assets()
-  self:load_level()
-end
-
 function Game:check_blobs()
   local b = false
   for i = #self.entity_mgr.entities, 1, -1 do
@@ -151,6 +164,9 @@ function Game:check_blobs()
       local blocker = self.entity_mgr.entities[i]
       blocker.remove = true
       self:create_whoosh(blocker.pos.x, blocker.pos.y)
+      self:create_whoosh(blocker.pos.x, blocker.pos.y+32)
+      self:create_whoosh(blocker.pos.x, blocker.pos.y+48)
+      self:create_whoosh(blocker.pos.x, blocker.pos.y+64)
     end
   end
   end
@@ -241,6 +257,8 @@ end
 function Game:draw()
   self.map:draw()
   Game.super.draw(self)
+
+  if draw_name then level_name:draw() end
 end
 
 return Game

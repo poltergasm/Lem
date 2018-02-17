@@ -29,6 +29,10 @@ function MapManager:map()
   return "assets/maps/" .. MAPS[self.current].file .. ".lua"
 end
 
+function MapManager:map_name()
+  return MAPS[self.current].name
+end
+
 function MapManager:next_map()
   self.current = self.current + 1
 end

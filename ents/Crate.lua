@@ -14,7 +14,6 @@ function EntityCrate:collides(normal, other)
 
   elseif (other.name == "ent_blob" or other.name == "ent_snail" or other.name == "ent_buzzy") and normal.y == -1 then
     other:die()
-    Game:check_blobs()
 
   elseif other.name == "ent_spring" and normal.y == -1 then
     Game.snd.spring:play()

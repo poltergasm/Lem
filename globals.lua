@@ -1,3 +1,7 @@
+CANVAS_WIDTH  = 1280
+CANVAS_HEIGHT = 736
+Canvas = love.graphics.newCanvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+
 Events   = require("lib.Events")()
 Keyboard = require "lib.Keyboard"
 GamePad  = require("lib.GamePad")({"assets/gamecontrollerdb.txt"})
@@ -6,5 +10,3 @@ MapManager = require("lib.MapManager"):new()
 Jukebox  = require("lib.Jukebox"):new()
 Game = require "scenes.Game"()
 SceneManager = require "lib.SceneManager"
-Game.Canvas = love.graphics.newCanvas(1280, 736)
-CANVAS_WIDTH = Game.Canvas:getWidth()
