@@ -10,8 +10,24 @@ function Input:grab()
   return false
 end
 
+function Input:enter()
+  if Keyboard:key_down("return") or GamePad:button(1, "a") then return true end
+end
+
 function Input:reset()
   if Keyboard:key_down("r") or GamePad:button(1, "back") then return true end
+end
+
+function Input:start()
+  if Keyboard:key_down("escape") or GamePad:button(1, "start") then return true end
+end
+
+function Input:up()
+  if Keyboard:key_down("up") or GamePad:button(1, "dpup") then return true end
+end
+
+function Input:down()
+  if Keyboard:key_down("down") or GamePad:button(1, "dpdown") then return true end
 end
 
 function Input:walk(d)

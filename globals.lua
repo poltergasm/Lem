@@ -10,3 +10,4 @@ MapManager = require("lib.MapManager"):new()
 Jukebox  = require("lib.Jukebox"):new()
 Game = require "scenes.Game"()
 SceneManager = require "lib.SceneManager"
+paused = false

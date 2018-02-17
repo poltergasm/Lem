@@ -12,6 +12,7 @@ local EntityWhoosh   = require "ents.Whoosh"
 local EntityBlocker  = require "ents.Blocker"
 local LevelEnd       = require "ents.LevelEnd"
 local EntityVertPlatform = require "ents.VertPlatform"
+local PauseMenu = require "lib.ui.PauseMenu"
 
 local Scene = require "lib.Scene"
 local Game = Scene:extends()
@@ -233,24 +234,28 @@ function Game:check_cols(ent, cols, idx)
 end
 
 function Game:update(dt)
-  Game.super.update(self, dt)
-  
-  self.map:update(dt)
-  self:player_movement(dt)
-  self.player:grip_check()
+  if not paused then
+    Game.super.update(self, dt)
+    
+    self.map:update(dt)
+    self:player_movement(dt)
+    self.player:grip_check()
 
-  if not draw_name then
-    for i = #self.entity_mgr.entities, 1, -1 do
-      local ent = self.entity_mgr.entities[i]
+    if not draw_name then
+      for i = #self.entity_mgr.entities, 1, -1 do
+        local ent = self.entity_mgr.entities[i]
 
-      if ent.is_dynamic then
-        ent:update_physics(dt)
+        if ent.is_dynamic then
+          ent:update_physics(dt)
+        end
+        
+        ent.pos.x, ent.pos.y, cols = self.world:move(ent, ent.pos.x, ent.pos.y, player_filter)
+
+        self:check_cols(ent, cols, i)
       end
-      
-      ent.pos.x, ent.pos.y, cols = self.world:move(ent, ent.pos.x, ent.pos.y, player_filter)
-
-      self:check_cols(ent, cols, i)
     end
+  else
+    PauseMenu:update(dt)
   end
 end
 
@@ -259,6 +264,7 @@ function Game:draw()
   Game.super.draw(self)
 
   if draw_name then level_name:draw() end
+  if paused then PauseMenu:draw() end
 end
 
 return Game
