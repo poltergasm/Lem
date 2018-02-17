@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" nextobjectid="16">
+ <properties>
+  <property name="snow" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/spritesheet.tsx"/>
+ <layer name="Background" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0bVxA1EARdEdS3XIYlZLMrPdkpmhJTFDDz7x5lrNaH5wghfc6LX3oqgdBEEQBDumQ5cefQYMGTFmwpQZcxYsWbFOoM+komifLDnyFChSokyFKjXqNGjSSm2+b3PAIUccc8IpZ5xzwSVXXHPDLXcJ9Pc88MgTz7zwyhvvfPDJF9/88MtfAn2HLj36DBgyYsyEKTPmLFiyYp1An0n7nyw58hQoUqJMhSo16jRo0kpvvt/2v/E2vrf9b7yN723/G2/jO/y72//+A64LraA=
+  </data>
+ </layer>
+ <layer name="Background2" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BkAX1OBgYDNGzIOdCuGpxAfzSM8IIo5oF2AWkgcpC5Fz0vDtU0xsg60C4YnICdhTg8UABbXYANk5suL1DXuVQHAoyk69GnQV4NZ8IuDgv/gQYgN2zA4g6Y24hJ3+HAsjcCS/kbykycGeTkHwPeUTyKBw4DAM0VMqQ=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="23">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BkAQ5h7HgUYILRMBraQIJloF2AH4zmQ/qAPqaBdgF+MFDuw1UXjKZL3ICeYTJYwh6fOww4CesnVA5TWk6D3LABzR2gPEVK+h4IPAqGNwAA7SIK4w==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="2" name="snail" x="544" y="256" width="32" height="32"/>
+  <object id="3" name="player_spawn" x="1056" y="64" width="32" height="32"/>
+  <object id="4" name="vert_platform" x="672" y="288" width="64" height="32">
+   <properties>
+    <property name="stopped" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" name="switch" x="864" y="160" width="32" height="32"/>
+  <object id="6" name="box" x="672" y="352" width="32" height="32"/>
+  <object id="7" name="spike" x="516" y="436" width="312" height="10.6667"/>
+  <object id="8" name="blob" x="480" y="544" width="32" height="32"/>
+  <object id="9" name="spike" x="69.3333" y="598.667" width="249.333" height="9.33333"/>
+  <object id="10" name="spike" x="610.667" y="596" width="474.667" height="10.6667"/>
+  <object id="11" name="blocker" x="32" y="416" width="32" height="128"/>
+  <object id="12" name="blob" x="1184" y="544" width="32" height="32"/>
+  <object id="13" name="snail" x="672" y="544" width="32" height="32"/>
+  <object id="14" name="box" x="1120" y="480" width="32" height="32"/>
+  <object id="15" name="level_end" x="0" y="512" width="32" height="32"/>
+ </objectgroup>
+</map>

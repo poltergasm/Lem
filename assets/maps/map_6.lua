@@ -1,0 +1,290 @@
+return {
+  version = "1.1",
+  luaversion = "5.1",
+  tiledversion = "1.0.3",
+  orientation = "orthogonal",
+  renderorder = "right-down",
+  width = 40,
+  height = 23,
+  tilewidth = 32,
+  tileheight = 32,
+  nextobjectid = 16,
+  properties = {
+    ["snow"] = true
+  },
+  tilesets = {
+    {
+      name = "spritesheet",
+      firstgid = 1,
+      filename = "../tilesets/spritesheet.tsx",
+      tilewidth = 32,
+      tileheight = 32,
+      spacing = 0,
+      margin = 0,
+      image = "../gfx/spritesheet.png",
+      imagewidth = 2048,
+      imageheight = 3456,
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 32,
+        height = 32
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 6912,
+      tiles = {}
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      name = "Background",
+      x = 0,
+      y = 0,
+      width = 40,
+      height = 23,
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {},
+      encoding = "base64",
+      compression = "zlib",
+      data = "eJzt0bVxA1EARdEdS3XIYlZLMrPdkpmhJTFDDz7x5lrNaH5wghfc6LX3oqgdBEEQBDumQ5cefQYMGTFmwpQZcxYsWbFOoM+komifLDnyFChSokyFKjXqNGjSSm2+b3PAIUccc8IpZ5xzwSVXXHPDLXcJ9Pc88MgTz7zwyhvvfPDJF9/88MtfAn2HLj36DBgyYsyEKTPmLFiyYp1An0n7nyw58hQoUqJMhSo16jRo0kpvvt/2v/E2vrf9b7yN723/G2/jO/y72//+A64LraA="
+    },
+    {
+      type = "tilelayer",
+      name = "Background2",
+      x = 0,
+      y = 0,
+      width = 40,
+      height = 23,
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {},
+      encoding = "base64",
+      compression = "zlib",
+      data = "eJxjYBgFo2BkAX1OBgYDNGzIOdCuGpxAfzSM8IIo5oF2AWkgcpC5Fz0vDtU0xsg60C4YnICdhTg8UABbXYANk5suL1DXuVQHAoyk69GnQV4NZ8IuDgv/gQYgN2zA4g6Y24hJ3+HAsjcCS/kbykycGeTkHwPeUTyKBw4DAM0VMqQ="
+    },
+    {
+      type = "tilelayer",
+      name = "Tile Layer 1",
+      x = 0,
+      y = 0,
+      width = 40,
+      height = 23,
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {
+        ["collidable"] = true
+      },
+      encoding = "base64",
+      compression = "zlib",
+      data = "eJxjYBgFo2BkAQ5h7HgUYILRMBraQIJloF2AH4zmQ/qAPqaBdgF+MFDuw1UXjKZL3ICeYTJYwh6fOww4CesnVA5TWk6D3LABzR2gPEVK+h4IPAqGNwAA7SIK4w=="
+    },
+    {
+      type = "objectgroup",
+      name = "Objects",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 2,
+          name = "snail",
+          type = "",
+          shape = "rectangle",
+          x = 544,
+          y = 256,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "player_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 1056,
+          y = 64,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "vert_platform",
+          type = "",
+          shape = "rectangle",
+          x = 672,
+          y = 288,
+          width = 64,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["stopped"] = true
+          }
+        },
+        {
+          id = 5,
+          name = "switch",
+          type = "",
+          shape = "rectangle",
+          x = 864,
+          y = 160,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "box",
+          type = "",
+          shape = "rectangle",
+          x = 672,
+          y = 352,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "spike",
+          type = "",
+          shape = "rectangle",
+          x = 516,
+          y = 436,
+          width = 312,
+          height = 10.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "blob",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "spike",
+          type = "",
+          shape = "rectangle",
+          x = 69.3333,
+          y = 598.667,
+          width = 249.333,
+          height = 9.33333,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "spike",
+          type = "",
+          shape = "rectangle",
+          x = 610.667,
+          y = 596,
+          width = 474.667,
+          height = 10.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "blocker",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 416,
+          width = 32,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "blob",
+          type = "",
+          shape = "rectangle",
+          x = 1184,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "snail",
+          type = "",
+          shape = "rectangle",
+          x = 672,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "box",
+          type = "",
+          shape = "rectangle",
+          x = 1120,
+          y = 480,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "level_end",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 512,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@ local EntityBlocker  = require "ents.Blocker"
 local LevelEnd       = require "ents.LevelEnd"
 local EntityVertPlatform = require "ents.VertPlatform"
 local PauseMenu = require "lib.ui.PauseMenu"
+local Snow      = require "lib.Snow"
 
 local Scene = require "lib.Scene"
 local Game = Scene:extends()
@@ -21,7 +22,7 @@ local bump = require "lib.bump"
 local sti  = require "lib.sti"
 
 local GRAVITY = 14.8
-local draw_name = true
+local draw_name = false
 local level_name = nil
 
 function Game:setup_bump()
@@ -43,6 +44,8 @@ function Game:load_assets()
     switch = love.audio.newSource("assets/audio/sfx/switch.wav"),
     boxblock = love.audio.newSource("assets/audio/sfx/boxblock.wav")
   }
+
+  Snow:load(CANVAS_WIDTH, CANVAS_HEIGHT, 50)
 end
 
 function Game:new()
@@ -64,6 +67,11 @@ function Game:load_level(new_level)
   local cy = love.graphics.getHeight() - Canvas:getHeight() * 0.6
   level_name = Label(cx, cy, 300, 60, MapManager:map_name())
   level_name.background = true
+
+  self.enable_snow = false
+  if self.map.properties ~= nil and self.map.properties.snow == true then
+    self.enable_snow = true
+  end
 
   if new_level then
     draw_name = true
@@ -234,6 +242,7 @@ function Game:check_cols(ent, cols, idx)
 end
 
 function Game:update(dt)
+  if self.enable_snow then Snow:update(dt) end
   if not paused then
     Game.super.update(self, dt)
     
@@ -260,11 +269,16 @@ function Game:update(dt)
 end
 
 function Game:draw()
+  if self.enable_snow then love.graphics.setColor(169, 169, 169) end
   self.map:draw()
   Game.super.draw(self)
 
-  if draw_name then level_name:draw() end
+  if draw_name and not paused then level_name:draw() end
   if paused then PauseMenu:draw() end
+
+  if self.enable_snow then
+    Snow:draw()
+  end
 end
 
 return Game

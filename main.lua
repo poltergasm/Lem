@@ -16,6 +16,8 @@ end
 local last_paused = nil
 
 function love.update(dt)
+  GamePad:update(dt)
+  
   if Input:start() then
     if paused then
       local gt = love.timer.getTime()
@@ -32,7 +34,6 @@ function love.update(dt)
     end
   end
 
-  GamePad:update(dt)
   SceneManager:update(dt)
 end
 

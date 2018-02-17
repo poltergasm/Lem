@@ -17,11 +17,35 @@ local MAPS = {
     idx   = 3,
     file  = "map_3",
     name  = "Hot Miami Nights"
+  },
+
+  {
+    idx   = 4,
+    file  = "map_4",
+    name  = "Timing is everything"
+  },
+
+  {
+    idx   = 5,
+    file  = "map_5",
+    name  = "Winter Wonderland"
+  },
+
+  {
+    idx   = 6,
+    file  = "map_6",
+    name  = "Lem's little helper"
+  },
+
+  {
+    idx   = 7,
+    file  = "map_7",
+    name  = "Yarr! A pirate's life 'fer me"
   }
 }
 
 function MapManager:new()
-  self.current = 2
+  self.current = 6
   return self
 end
 

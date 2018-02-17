@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" nextobjectid="17">
+ <properties>
+  <property name="snow" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/spritesheet.tsx"/>
+ <layer name="Background" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0VtSgQEAhuE/CxFRiLZEBznbElJ0YksIlUP20LOCzNT4u/kvnst35pv5ikEQFCORSCQS+YUSl1xxzQ1lbqlQpUadBk1atEPoO3TpcUefex4YMOSRJ5554ZUR4xD6CVNmvDFnwZJ3PvhkxZoNW77YhdDHj4LgmARJTkiR5pQzMmTJcU6eAhdHh++LlLjkimtuKHNLhSo16jRo0qIdQt+hS487+tzzwIAhjzzxzAuvjBiH0E+YMuONOQuWvPPBJyvWbNjyxS6EPh7zPwmSnJAizSlnZMiS45w8BS5ih++jf3/u9+3773/37Yv+/du/34zlu1Q=
+  </data>
+ </layer>
+ <layer name="Background2" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSigDGhxMzBoQ7EON3ZxfBhZz1AFFwbaAQSAAONAuwATFHBjYnSgNYBphBj3DSQYKe7L5iUNU9t9q3kx8aj7cLsPAKwqLY8=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="23">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAT1AHxMED2ZArvuEhFExLnF8mJbuoxcYdR9pAD0NcPLgVzMKaANISRe0SEPoZqLzSSlHaJFO6GHHcAIA89MLWQ==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="1" name="player_spawn" x="1120" y="448" width="32" height="32"/>
+  <object id="2" name="blocker" x="1152" y="384" width="32" height="128"/>
+  <object id="3" name="vert_platform" x="960" y="576" width="64" height="32"/>
+  <object id="4" name="vert_platform" x="832" y="608" width="64" height="32"/>
+  <object id="5" name="blob" x="544" y="576" width="32" height="32"/>
+  <object id="6" name="vert_platform" x="288" y="576" width="64" height="32"/>
+  <object id="7" name="box" x="320" y="128" width="32" height="32"/>
+  <object id="8" name="blob" x="192" y="608" width="32" height="32"/>
+  <object id="9" name="switch" x="96" y="512" width="32" height="32"/>
+  <object id="10" name="box" x="512" y="192" width="32" height="32"/>
+  <object id="12" name="vert_platform" x="512" y="384" width="64" height="32"/>
+  <object id="13" name="level_end" x="1184" y="480" width="32" height="32"/>
+  <object id="14" name="spike" x="704" y="729.333" width="576" height="6.66667"/>
+  <object id="16" name="spike" x="-2.66667" y="725.333" width="494.667" height="13.3333"/>
+ </objectgroup>
+</map>
