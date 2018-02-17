@@ -40,12 +40,24 @@ local MAPS = {
   {
     idx   = 7,
     file  = "map_7",
-    name  = "Yarr! A pirate's life 'fer me"
+    name  = "Yarr! A pirate's life for me"
+  },
+
+  {
+    idx   = 8,
+    file  = "map_8",
+    name  = "Spring into action. LOL"
+  },
+
+  {
+    idx   = 9,
+    file  = "map_9",
+    name  = "Everything you've learnt"
   }
 }
 
 function MapManager:new()
-  self.current = 6
+  self.current = 9
   return self
 end
 

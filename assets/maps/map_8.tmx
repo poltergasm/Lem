@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" nextobjectid="10">
+ <tileset firstgid="1" source="../tilesets/spritesheet.tsx"/>
+ <layer name="Background" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0V1SQQEYBuBTC5EkQraEIj/FloRCP2wJhRD20HPRDhpnMnMunpnv5p355n0LQRAUKXHDLWUq3FGlRp0G9zzQpEXnwNo8/t5dejzxTJ8BQ1545Y13RoxD+K8QRP39RdRf1F/U3/H2999NmDLjg0/mLFjyxYo1G77ZsmMfQj52EgRnxDknwQVJLkmR5ooMWXJckz85fL5AkRI33FKmwh1VatRpcM8DTVoh5Ns80qFLjyee6TNgyAuvvPHOiHEI+QlTZnzwyZwFS75YsWbDN1t27EPIx07tT5xzElyQ5JIUaa7IkCXHNfnTw+ejfaN9o32Pd98fGigHjw==
+  </data>
+ </layer>
+ <layer name="Background2" width="40" height="23">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDBdwgUrmzGRCsKcD2TOYcKtFBhGM+OUFoPLTiDQPHZjwMzCY4sBm/KTrxaeGkHmjgDJgTGH4Uqp/KIJZBPLNVDLzFbUAvvw5mq9GwSgYBaNg5AAA3cgMgw==
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="23">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhAYR48WNS9RJSMwpoBygN39H4GXyAUP4czVejYBSMglEwMgAAusMDhA==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="3" name="player_spawn" x="1216" y="160" width="32" height="64"/>
+  <object id="4" name="spring" x="992" y="288" width="32" height="32"/>
+  <object id="6" name="box" x="480" y="288" width="32" height="32"/>
+  <object id="7" name="spring" x="608" y="384" width="32" height="32"/>
+  <object id="8" name="spike" x="0" y="729.333" width="1281.33" height="6.66667"/>
+  <object id="9" name="level_end" x="128" y="224" width="32" height="32"/>
+ </objectgroup>
+</map>
