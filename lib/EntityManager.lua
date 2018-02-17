@@ -18,11 +18,13 @@ end
 
 function EntityManager:update(dt)
   for i = #self.entities, 1, -1 do
-    if self.entities[i].remove then
-      self.world:remove(self.entities[i])
-      table.remove(self.entities, i)
-    else
-      self.entities[i]:update(dt)
+    if self.entities[i] ~= nil then
+      if self.entities[i].remove then
+        self.world:remove(self.entities[i])
+        table.remove(self.entities, i)
+      else
+        self.entities[i]:update(dt)
+      end
     end
   end
 end

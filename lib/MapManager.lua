@@ -53,11 +53,17 @@ local MAPS = {
     idx   = 9,
     file  = "map_9",
     name  = "Everything you've learnt"
+  },
+
+  {
+    idx   = 10,
+    file  = "map_10",
+    name  = "There will be rain"
   }
 }
 
 function MapManager:new()
-  self.current = 9
+  self.current = 10
   return self
 end
 

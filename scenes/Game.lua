@@ -13,7 +13,8 @@ local EntityBlocker  = require "ents.Blocker"
 local LevelEnd       = require "ents.LevelEnd"
 local EntityVertPlatform = require "ents.VertPlatform"
 local PauseMenu = require "lib.ui.PauseMenu"
-local Snow      = require "lib.Snow"
+local Snow      = require "lib.effects.Snow"
+local Rain      = require "lib.effects.Rain"
 
 local Scene = require "lib.Scene"
 local Game = Scene:extends()
@@ -33,11 +34,14 @@ function Game:setup_bump()
 end
 
 function Game:load_assets()
-  Jukebox:add_song({ file = "assets/audio/bgm/song1.mp3" })
-  Jukebox:add_song({ file = "assets/audio/bgm/song2.mp3" })
+  Jukebox:add_song({ file = "assets/audio/bgm/song_1.mp3" })
+  Jukebox:add_song({ file = "assets/audio/bgm/song_2.mp3" })
+  Jukebox:add_song({ file = "assets/audio/bgm/song_3.mp3" })
+  Jukebox:add_song({ file = "assets/audio/bgm/song_4.mp3" })
   Jukebox:play()
 
   self.snd = {
+    hurt = love.audio.newSource("assets/audio/sfx/hurt.wav"),
     jump = love.audio.newSource("assets/audio/sfx/jump.wav"),
     squash = love.audio.newSource("assets/audio/sfx/squash.wav"),
     spring = love.audio.newSource("assets/audio/sfx/spring.wav"),
@@ -46,6 +50,7 @@ function Game:load_assets()
   }
 
   Snow:load(CANVAS_WIDTH, CANVAS_HEIGHT, 50)
+  Rain:load(CANVAS_WIDTH, CANVAS_HEIGHT, 100)
 end
 
 function Game:new()
@@ -69,8 +74,13 @@ function Game:load_level(new_level)
   level_name.background = true
 
   self.enable_snow = false
+  self.enable_rain = false
   if self.map.properties ~= nil and self.map.properties.snow == true then
     self.enable_snow = true
+  end
+
+  if self.map.properties ~= nil and self.map.properties.rain == true then
+    self.enable_rain = true
   end
 
   if new_level then
@@ -243,6 +253,7 @@ end
 
 function Game:update(dt)
   if self.enable_snow then Snow:update(dt) end
+  if self.enable_rain then Rain:update(dt) end
   if not paused then
     Game.super.update(self, dt)
     
@@ -269,16 +280,15 @@ function Game:update(dt)
 end
 
 function Game:draw()
-  if self.enable_snow then love.graphics.setColor(169, 169, 169) end
+  if self.enable_snow or self.enable_rain then love.graphics.setColor(169, 169, 169) end
   self.map:draw()
   Game.super.draw(self)
 
   if draw_name and not paused then level_name:draw() end
   if paused then PauseMenu:draw() end
 
-  if self.enable_snow then
-    Snow:draw()
-  end
+  if self.enable_snow then Snow:draw() end
+  if self.enable_rain then Rain:draw() end
 end
 
 return Game

@@ -110,6 +110,7 @@ function Player:collides(normal, other)
 end
 
 function Player:die()
+  Game.snd.hurt:play()
   self.remove = true
   Game:create_whoosh(self.pos.x, self.pos.y, "purple")
 end

@@ -17,6 +17,7 @@ local last_paused = nil
 
 function love.update(dt)
   GamePad:update(dt)
+  Jukebox:update(dt)
   
   if Input:start() then
     if paused then
