@@ -41,5 +41,6 @@ function love.draw()
   SceneManager:draw()
   love.graphics.setCanvas()
 
+  local scale = love.graphics.getWidth() / Canvas:getWidth()
   love.graphics.draw(Canvas, 0, 0, 0, scale, scale)
 end

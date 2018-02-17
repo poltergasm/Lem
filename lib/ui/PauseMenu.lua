@@ -80,7 +80,15 @@ function PauseMenu:update(dt)
           Jukebox:pause()
         end
       elseif opt == 2 then
-        -- enable/disable fullscreen
+        if options.fullscreen.val then
+          options.fullscreen.val  = false
+          options.fullscreen.text = "Enable Fullscreen"
+          love.window.setFullscreen(false)
+        else
+          options.fullscreen.val  = true
+          options.fullscreen.text = "Disable Fullscreen"
+          love.window.setFullscreen(true)
+        end
       elseif opt == 3 then
         love.event.quit()
       end
