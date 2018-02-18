@@ -236,12 +236,14 @@ return {
           type = "",
           shape = "rectangle",
           x = 512,
-          y = 384,
+          y = 369,
           width = 64,
           height = 32,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["stopped"] = true
+          }
         },
         {
           id = 13,

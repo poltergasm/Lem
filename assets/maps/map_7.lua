@@ -169,13 +169,13 @@ return {
           type = "",
           shape = "rectangle",
           x = 288,
-          y = 448,
+          y = 430,
           width = 64,
           height = 32,
           rotation = 0,
           visible = true,
           properties = {
-            ["stopped"] = false
+            ["stopped"] = true
           }
         },
         {

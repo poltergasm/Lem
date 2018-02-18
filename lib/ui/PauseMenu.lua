@@ -84,10 +84,12 @@ function PauseMenu:update(dt)
           options.fullscreen.val  = false
           options.fullscreen.text = "Enable Fullscreen"
           love.window.setFullscreen(false)
+          Fullscreen = false
         else
           options.fullscreen.val  = true
           options.fullscreen.text = "Disable Fullscreen"
           love.window.setFullscreen(true)
+          Fullscreen = true
         end
       elseif opt == 3 then
         love.event.quit()

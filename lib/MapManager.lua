@@ -63,7 +63,7 @@ local MAPS = {
 }
 
 function MapManager:new()
-  self.current = 10
+  self.current = 1
   return self
 end
 

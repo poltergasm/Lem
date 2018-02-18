@@ -16,6 +16,8 @@ end
 local last_paused = nil
 
 function love.update(dt)
+  if dt > 0.035 then return end
+  
   GamePad:update(dt)
   Jukebox:update(dt)
   

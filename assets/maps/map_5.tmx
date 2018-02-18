@@ -33,7 +33,11 @@
   <object id="8" name="blob" x="192" y="608" width="32" height="32"/>
   <object id="9" name="switch" x="96" y="512" width="32" height="32"/>
   <object id="10" name="box" x="512" y="192" width="32" height="32"/>
-  <object id="12" name="vert_platform" x="512" y="384" width="64" height="32"/>
+  <object id="12" name="vert_platform" x="512" y="369" width="64" height="32">
+   <properties>
+    <property name="stopped" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="13" name="level_end" x="1184" y="480" width="32" height="32"/>
   <object id="14" name="spike" x="704" y="729.333" width="576" height="6.66667"/>
   <object id="16" name="spike" x="-2.66667" y="725.333" width="494.667" height="13.3333"/>

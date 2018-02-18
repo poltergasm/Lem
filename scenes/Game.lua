@@ -24,7 +24,6 @@ local sti  = require "lib.sti"
 
 local GRAVITY = 14.8
 local draw_name = false
-local level_name = nil
 
 function Game:setup_bump()
   self.entity_mgr.entities = {}
@@ -68,10 +67,18 @@ function Game:load_level(new_level)
   self:spawn_objects()
   self.map:removeLayer("Objects")
 
-  local cx = love.graphics.getWidth() - Canvas:getWidth() * 0.6
-  local cy = love.graphics.getHeight() - Canvas:getHeight() * 0.6
-  level_name = Label(cx, cy, 300, 60, MapManager:map_name())
-  level_name.background = true
+  local cx, cy = 0, 0
+
+  if not Fullscreen then
+    cx = love.graphics.getWidth() - Canvas:getWidth() * 0.6
+    cy = love.graphics.getHeight() - Canvas:getHeight() * 0.6
+  else
+    cx = love.graphics.getWidth() / 4
+    cy = love.graphics.getHeight() / 4
+  end
+
+  self.level_name = Label(cx, cy, 300, 60, MapManager:map_name())
+  self.level_name.background = true
 
   self.enable_snow = false
   self.enable_rain = false
@@ -284,7 +291,7 @@ function Game:draw()
   self.map:draw()
   Game.super.draw(self)
 
-  if draw_name and not paused then level_name:draw() end
+  if draw_name and not paused then self.level_name:draw() end
   if paused then PauseMenu:draw() end
 
   if self.enable_snow then Snow:draw() end

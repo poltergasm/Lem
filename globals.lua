@@ -1,6 +1,7 @@
 CANVAS_WIDTH  = 1280
 CANVAS_HEIGHT = 736
 Canvas = love.graphics.newCanvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+Fullscreen = false
 
 Events   = require("lib.Events")()
 Keyboard = require "lib.Keyboard"
