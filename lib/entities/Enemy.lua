@@ -20,7 +20,7 @@ function Enemy:hit_edge_left()
 end
 
 function Enemy:hit_edge_right()
-  self.dir = 1
+  self.dir = -1
   self.state = self.Animate:state("run")
 end
 
